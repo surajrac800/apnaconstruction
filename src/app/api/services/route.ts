@@ -1,19 +1,29 @@
 import { NextResponse } from "next/server";
 import { ApiResponse, Service } from "@/types";
-import { SERVICES } from "@/lib/constants";
+import { HOME_SERVICES, CONSTRUCTION_SERVICES } from "@/lib/constants";
 
 export async function GET() {
   try {
-    const services: Service[] = SERVICES.map((service) => ({
-      id: service.id,
-      title: service.title,
-      description: service.description,
-    }));
+    // Combine home services and construction services
+    const allServices: Service[] = [
+      ...HOME_SERVICES.map((service) => ({
+        id: service.id,
+        title: service.title,
+        description: service.description,
+        icon: service.icon,
+      })),
+      ...CONSTRUCTION_SERVICES.map((service) => ({
+        id: service.id,
+        title: service.title,
+        description: service.description,
+        icon: service.icon,
+      })),
+    ];
 
     return NextResponse.json<ApiResponse<Service[]>>(
       {
         success: true,
-        data: services,
+        data: allServices,
       },
       { status: 200 }
     );
