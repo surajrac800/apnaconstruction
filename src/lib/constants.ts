@@ -173,6 +173,7 @@ export const NAVIGATION_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/pricing", label: "Pricing" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact Us" },
@@ -192,4 +193,31 @@ export const COMPANY_VALUES = [
   "On-Time Delivery",
   "Customer Satisfaction",
   "Professional Project Management",
+];
+
+export const FEATURED_WORKS = [
+  {
+    id: 1,
+    name: "Modern Residential Villa",
+    image: "WhatsApp Image 2025-12-13 at 3.15.30 PM.jpeg",
+    description: "Complete residential construction with modern architecture",
+  },
+  {
+    id: 2,
+    name: "Commercial Office Space",
+    image: "WhatsApp Image 2025-12-13 at 3.15.31 PM.jpeg",
+    description: "Spacious commercial office with premium finishing",
+  },
+  {
+    id: 3,
+    name: "Luxury Home Interior",
+    image: "WhatsApp Image 2025-12-13 at 3.15.32 PM.jpeg",
+    description: "Elegant interior design with modern amenities",
+  },
+  {
+    id: 4,
+    name: "Renovation Project",
+    image: "WhatsApp Image 2025-12-13 at 3.15.33 PM.jpeg",
+    description: "Complete home renovation with structural improvements",
+  },
 ];

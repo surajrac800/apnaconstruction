@@ -168,7 +168,7 @@ export default function PricingPage() {
             </div>
 
             <div className="relative z-10">
-              <div className="text-5xl mb-4">📋</div>
+              
               <h3 className="text-3xl md:text-4xl font-bold mb-4 font-poppins">Get Your Custom Quote</h3>
               <p className="text-xl md:text-2xl mb-8 text-orange-100 font-inter">
                 Contact us for a detailed quotation tailored to your project

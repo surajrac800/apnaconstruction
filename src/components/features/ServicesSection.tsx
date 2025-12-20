@@ -1,11 +1,24 @@
 "use client";
 
-import { HOME_SERVICES, CONSTRUCTION_SERVICES } from "@/lib/constants";
+import { HOME_SERVICES, CONSTRUCTION_SERVICES, FEATURED_WORKS } from "@/lib/constants";
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function ServicesSection() {
   const [hoveredService, setHoveredService] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Rotate background images
+  const backgroundImages = FEATURED_WORKS.map(work => `/Apna construction assets/${work.image}`);
+
+  // Auto-rotate background images every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
@@ -14,22 +27,49 @@ export default function ServicesSection() {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-200/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        {/* Home Services */}
+        {/* Home Services Header with Background Image */}
         <div className="mb-20">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-4">
-              <span className="text-6xl">🔧</span>
+          <div className="relative rounded-3xl overflow-hidden mb-16 min-h-[400px] md:min-h-[500px] flex items-center">
+            {/* Background Image with fade transition */}
+            <div className="absolute inset-0 z-0">
+              {backgroundImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <Image
+                    src={image}
+                    alt="Home services background"
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                    sizes="100vw"
+                  />
+                </div>
+              ))}
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/70 to-black/75"></div>
+              {/* Orange/amber tint overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-600/50 via-amber-500/40 to-yellow-400/30"></div>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
-                Home Services
-              </span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-orange-600 to-amber-500 mx-auto mb-4 rounded-full"></div>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Professional home maintenance and repair services at your doorstep. 
-              <span className="font-semibold text-orange-600"> Trusted by thousands of happy customers.</span>
-            </p>
+
+            {/* Text Content Overlay */}
+            <div className="relative z-10 text-center text-white px-4 py-16 md:py-20 w-full">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-2xl">
+                <span className="bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent">
+                  Home Services
+                </span>
+              </h2>
+              <div className="w-32 h-1.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6 rounded-full"></div>
+              <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed drop-shadow-lg font-semibold">
+                Professional home maintenance and repair services at your doorstep.
+              </p>
+              <p className="text-base md:text-lg text-yellow-100 max-w-2xl mx-auto mt-4 drop-shadow-md">
+                Trusted by thousands of happy customers.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -90,9 +130,9 @@ export default function ServicesSection() {
         {/* Construction Services */}
         <div className="mb-12">
           <div className="text-center mb-16">
-            <div className="inline-block mb-4">
+            {/* <div className="inline-block mb-4">
               <span className="text-6xl">🏗️</span>
-            </div>
+            </div> */}
             <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               <span className="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
                 Construction Services

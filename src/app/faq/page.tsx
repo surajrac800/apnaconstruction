@@ -78,7 +78,7 @@ export default function FAQPage() {
             </div>
 
             <div className="relative z-10">
-              <div className="text-5xl mb-4">💬</div>
+              
               <h3 className="text-3xl md:text-4xl font-bold mb-4 font-poppins">Still Have Questions?</h3>
               <p className="text-xl md:text-2xl mb-8 text-orange-100 font-inter">
                 We're here to help! Get in touch with us for any queries.

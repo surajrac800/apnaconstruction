@@ -17,12 +17,7 @@ export default function WhyChooseUs() {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-6">
-            <div className="relative">
-              <span className="text-7xl animate-pulse">⭐</span>
-              <div className="absolute inset-0 bg-yellow-300/30 rounded-full blur-2xl animate-pulse"></div>
-            </div>
-          </div>
+          
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             <span className="bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 bg-clip-text text-transparent animate-gradient">
               Why Choose Us?
@@ -105,9 +100,7 @@ export default function WhyChooseUs() {
             </div>
 
             <div className="relative z-10">
-              <div className="inline-block mb-4">
-                <span className="text-5xl animate-bounce">🚀</span>
-              </div>
+              
               <h3 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
                 Ready to Start Your Project?
               </h3>
